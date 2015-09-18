@@ -16,14 +16,19 @@ import android.widget.Toast;
 
 import com.shevchenkodev.doctorcat.adapter.TabAdapter;
 import com.shevchenkodev.doctorcat.dialog.AddingTaskDialogFragmen;
+import com.shevchenkodev.doctorcat.fragment.CurrentTaskFragment;
+import com.shevchenkodev.doctorcat.fragment.DoneTaskFragment;
 import com.shevchenkodev.doctorcat.fragment.SplashFragment;
+import com.shevchenkodev.doctorcat.model.ModelTask;
 
 
 public class MainActivity extends AppCompatActivity
         implements AddingTaskDialogFragmen.AddingTaskListener {
     FragmentManager fragmentManager;
     PreferenceHelper preferenceHelper;
-
+    TabAdapter tabAdapter;
+    CurrentTaskFragment currentTaskFragment;
+    DoneTaskFragment doneTaskFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +121,10 @@ public class MainActivity extends AppCompatActivity
 
 
         });
+        currentTaskFragment = (CurrentTaskFragment) tabAdapter.getItem(TabAdapter.CURRENT_TASK_FRAGMENT_POSITION);
+        doneTaskFragment = (DoneTaskFragment) tabAdapter.getItem(TabAdapter.DONE_TASK_FRAGMENT_POSITION);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -129,8 +138,8 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public void onTaskAdded() {
-        Toast.makeText(this, "Task added.", Toast.LENGTH_LONG).show();
+    public void onTaskAdded(ModelTask newTask) {
+        currentTaskFragment.addTask(newTask);
 
     }
 

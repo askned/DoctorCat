@@ -42,7 +42,9 @@ public class SplashFragment extends Fragment {
                 e.printStackTrace();
             }
 
-            getActivity().getFragmentManager().popBackStack();
+            if (getActivity() != null) {
+                getActivity().getFragmentManager().popBackStack();
+            }
 
             return null;
         }
