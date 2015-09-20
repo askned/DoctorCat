@@ -11,9 +11,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import com.shevchenkodev.doctorcat.R;
@@ -61,6 +64,7 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         final TextInputLayout tilTime = (TextInputLayout) container.findViewById(R.id.tilDialogTaskTime);
         final EditText etTime = tilTime.getEditText();
 
+        Spinner spPriority = (Spinner) container.findViewById(R.id.spDialogTaskPriority);
 
         tilTitle.setHint(getResources().getString(R.string.task_title));
         tilDate.setHint(getResources().getString(R.string.task_date));
@@ -69,6 +73,25 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         builder.setView(container);
 
         final ModelTask task = new ModelTask();
+
+        ArrayAdapter<String> priorityAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_dropdown_item, ModelTask.PRIORITY_LEVELS);
+
+        spPriority.setAdapter(priorityAdapter);
+
+        spPriority.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                task.setPriority(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         final Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + 1);
 
@@ -85,8 +108,6 @@ public class AddingTaskDialogFragmen extends DialogFragment {
                         calendar.set(Calendar.YEAR, year);
                         calendar.set(Calendar.MONTH, monthOfYear);
                         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        //    Calendar dateCalendar = Calendar.getInstance();
-                        //   dateCalendar.set(year, monthOfYear, dayOfMonth);
                         etDate.setText(Utils.getDate(calendar.getTimeInMillis()));
                     }
 
@@ -133,12 +154,12 @@ public class AddingTaskDialogFragmen extends DialogFragment {
                 if (etDate.length() != 0 || etTime.length() != 0) {
                     task.setDate(calendar.getTimeInMillis());
                 }
+                task.setStatus(ModelTask.STATUS_CURRENT);
                 addingTaskListener.onTaskAdded(task);
+
                 dialog.dismiss();
             }
-        });
-
-        builder.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+        }).setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 addingTaskListener.onTaskAddingCancel();

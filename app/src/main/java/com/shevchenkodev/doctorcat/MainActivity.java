@@ -19,16 +19,19 @@ import com.shevchenkodev.doctorcat.dialog.AddingTaskDialogFragmen;
 import com.shevchenkodev.doctorcat.fragment.CurrentTaskFragment;
 import com.shevchenkodev.doctorcat.fragment.DoneTaskFragment;
 import com.shevchenkodev.doctorcat.fragment.SplashFragment;
+import com.shevchenkodev.doctorcat.fragment.TaskFragment;
 import com.shevchenkodev.doctorcat.model.ModelTask;
 
 
 public class MainActivity extends AppCompatActivity
-        implements AddingTaskDialogFragmen.AddingTaskListener {
+        implements AddingTaskDialogFragmen.AddingTaskListener,
+        CurrentTaskFragment.OnTaskDoneListener, DoneTaskFragment.OnTaskRestoreListener {
+
     FragmentManager fragmentManager;
     PreferenceHelper preferenceHelper;
     TabAdapter tabAdapter;
-    CurrentTaskFragment currentTaskFragment;
-    DoneTaskFragment doneTaskFragment;
+    TaskFragment currentTaskFragment;
+    TaskFragment doneTaskFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,4 +153,13 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void onTaskDone(ModelTask task) {
+        doneTaskFragment.addTask(task);
+    }
+
+    @Override
+    public void onTaskRestore(ModelTask task) {
+        currentTaskFragment.addTask(task);
+    }
 }
