@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.shevchenkodev.doctorcat.adapter.TabAdapter;
+import com.shevchenkodev.doctorcat.datebase.DBHelper;
 import com.shevchenkodev.doctorcat.dialog.AddingTaskDialogFragmen;
 import com.shevchenkodev.doctorcat.fragment.CurrentTaskFragment;
 import com.shevchenkodev.doctorcat.fragment.DoneTaskFragment;
@@ -33,12 +34,15 @@ public class MainActivity extends AppCompatActivity
     TaskFragment currentTaskFragment;
     TaskFragment doneTaskFragment;
 
+    public DBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         PreferenceHelper.getInstance().init(getApplicationContext());
         preferenceHelper = PreferenceHelper.getInstance();
+        dbHelper = new DBHelper(getApplicationContext());
 
         fragmentManager = getFragmentManager();
         runSplash();
@@ -142,7 +146,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTaskAdded(ModelTask newTask) {
-        currentTaskFragment.addTask(newTask);
+        currentTaskFragment.addTask(newTask, true);
 
     }
 
@@ -155,11 +159,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTaskDone(ModelTask task) {
-        doneTaskFragment.addTask(task);
+        doneTaskFragment.addTask(task, true);
     }
 
     @Override
     public void onTaskRestore(ModelTask task) {
-        currentTaskFragment.addTask(task);
+        currentTaskFragment.addTask(task, false);
     }
 }

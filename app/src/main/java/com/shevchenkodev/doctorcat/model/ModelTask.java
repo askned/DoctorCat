@@ -2,6 +2,8 @@ package com.shevchenkodev.doctorcat.model;
 
 import com.shevchenkodev.doctorcat.R;
 
+import java.util.Date;
+
 public class ModelTask implements Item {
 
     public static final int PRIORITY_LOW = 0;
@@ -18,6 +20,7 @@ public class ModelTask implements Item {
     Long date;
     private int priority;
     private int status;
+    private long timeStamp;
 
     public int getPriority() {
         return priority;
@@ -63,8 +66,18 @@ public class ModelTask implements Item {
         this.status = status;
     }
 
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
     public ModelTask() {
         this.status = -1;
+        this.timeStamp = new Date().getTime();
+
 
 
     }
@@ -86,11 +99,12 @@ public class ModelTask implements Item {
         this.title = title;
     }
 
-    public ModelTask(String title, Long date, int priority, int status) {
+    public ModelTask(String title, Long date, int priority, int status, long timeStamp) {
         this.title = title;
         this.date = date;
         this.priority = priority;
         this.status = status;
+        this.timeStamp = timeStamp;
 
     }
 
