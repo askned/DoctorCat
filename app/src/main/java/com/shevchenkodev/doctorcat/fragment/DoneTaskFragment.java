@@ -51,17 +51,21 @@ public class DoneTaskFragment extends TaskFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_done_task, container, false);
+
         recyclerView = (RecyclerView) rootView.findViewById(R.id.rvDoneTasks);
+
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new DoneTaskAdapter(this);
         recyclerView.setAdapter(adapter);
 
-
+        // Inflate the layout for this fragment
         return rootView;
     }
+
 
     @Override
     public void addTaskFromDB() {
@@ -73,9 +77,9 @@ public class DoneTaskFragment extends TaskFragment {
         }
     }
 
+
     @Override
     public void moveTask(ModelTask task) {
         onTaskRestoreListener.onTaskRestore(task);
-
     }
 }

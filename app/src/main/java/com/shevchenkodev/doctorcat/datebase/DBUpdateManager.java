@@ -50,5 +50,4 @@ public class DBUpdateManager {
         database.update(DBHelper.TASKS_TABLE, cv, DBHelper.TASK_TIME_STAMP_COLUMN + " = " + key, null);
     }
 
-
 }
