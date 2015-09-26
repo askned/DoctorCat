@@ -19,6 +19,7 @@ import com.shevchenkodev.doctorcat.adapter.TabAdapter;
 import com.shevchenkodev.doctorcat.alarm.AlarmHelper;
 import com.shevchenkodev.doctorcat.datebase.DBHelper;
 import com.shevchenkodev.doctorcat.dialog.AddingTaskDialogFragmen;
+import com.shevchenkodev.doctorcat.dialog.EditTaskDialogFragment;
 import com.shevchenkodev.doctorcat.fragment.CurrentTaskFragment;
 import com.shevchenkodev.doctorcat.fragment.DoneTaskFragment;
 import com.shevchenkodev.doctorcat.fragment.SplashFragment;
@@ -28,7 +29,8 @@ import com.shevchenkodev.doctorcat.model.ModelTask;
 
 public class MainActivity extends AppCompatActivity
         implements AddingTaskDialogFragmen.AddingTaskListener,
-        CurrentTaskFragment.OnTaskDoneListener, DoneTaskFragment.OnTaskRestoreListener {
+        CurrentTaskFragment.OnTaskDoneListener, DoneTaskFragment.OnTaskRestoreListener,
+        EditTaskDialogFragment.EditingTaskListener {
 
     FragmentManager fragmentManager;
     PreferenceHelper preferenceHelper;
@@ -196,5 +198,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onTaskRestore(ModelTask task) {
         currentTaskFragment.addTask(task, false);
+    }
+
+    @Override
+    public void onTaskEdited(ModelTask updatedTask) {
+        currentTaskFragment.updateTask(updatedTask);
+        dbHelper.update().task(updatedTask);
     }
 }

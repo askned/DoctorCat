@@ -1,6 +1,7 @@
 package com.shevchenkodev.doctorcat.fragment;
 
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import com.shevchenkodev.doctorcat.MainActivity;
 import com.shevchenkodev.doctorcat.R;
 import com.shevchenkodev.doctorcat.adapter.TaskAdapter;
 import com.shevchenkodev.doctorcat.alarm.AlarmHelper;
+import com.shevchenkodev.doctorcat.dialog.EditTaskDialogFragment;
 import com.shevchenkodev.doctorcat.model.Item;
 import com.shevchenkodev.doctorcat.model.ModelTask;
 
@@ -36,28 +38,11 @@ public abstract class TaskFragment extends Fragment {
         addTaskFromDB();
     }
 
-    public void addTask(ModelTask newTask, boolean saveToDB) {
-        int position = -1;
-
-        for (int i = 0; i < adapter.getItemCount(); i++) {
-            if (adapter.getItem(i).isTask()) {
-                ModelTask task = (ModelTask) adapter.getItem(i);
-                if (newTask.getDate() < task.getDate()) {
-                    position = i;
-                    break;
-                }
-            }
-        }
-
-        if (position != -1) {
-            adapter.addItem(position, newTask);
-        } else {
-            adapter.addItem(newTask);
-        }
-        if (saveToDB) {
-            activity.dbHelper.saveTask(newTask);
-        }
+    public void updateTask(ModelTask task) {
+        adapter.updateTask(task);
     }
+
+    public abstract void addTask(ModelTask newTask, boolean saveToDB);
 
     public void removeTaskDialog(final int location) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -109,6 +94,11 @@ public abstract class TaskFragment extends Fragment {
             });
         }
         dialogBuilder.show();
+    }
+
+    public void showTaskEditDialog(ModelTask task) {
+        DialogFragment editingTaskDialog = EditTaskDialogFragment.newInstance(task);
+        editingTaskDialog.show(getActivity().getFragmentManager(), "EditTaskDialogFragment");
     }
 
     public abstract void findTasks(String title);

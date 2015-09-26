@@ -21,6 +21,7 @@ public class ModelTask implements Item {
     private int priority;
     private int status;
     private long timeStamp;
+    private int dateStatus;
 
     public int getPriority() {
         return priority;
@@ -111,5 +112,13 @@ public class ModelTask implements Item {
     @Override
     public boolean isTask() {
         return true;
+    }
+
+    public int getDateStatus() {
+        return dateStatus;
+    }
+
+    public void setDateStatus(int dateStatus) {
+        this.dateStatus = dateStatus;
     }
 }
