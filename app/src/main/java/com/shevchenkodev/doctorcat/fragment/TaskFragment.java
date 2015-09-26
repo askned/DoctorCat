@@ -11,6 +11,7 @@ import android.view.View;
 import com.shevchenkodev.doctorcat.MainActivity;
 import com.shevchenkodev.doctorcat.R;
 import com.shevchenkodev.doctorcat.adapter.TaskAdapter;
+import com.shevchenkodev.doctorcat.alarm.AlarmHelper;
 import com.shevchenkodev.doctorcat.model.Item;
 import com.shevchenkodev.doctorcat.model.ModelTask;
 
@@ -23,12 +24,15 @@ public abstract class TaskFragment extends Fragment {
 
     public MainActivity activity;
 
+    public AlarmHelper alarmHelper;
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() != null) {
             activity = (MainActivity) getActivity();
         }
+        alarmHelper = AlarmHelper.getInstance();
         addTaskFromDB();
     }
 
@@ -88,6 +92,7 @@ public abstract class TaskFragment extends Fragment {
                         public void onViewDetachedFromWindow(View v) {
                             if (isRemoved[0]) {
                                 activity.dbHelper.removeTask(timeStamp);
+                                alarmHelper.removeAlarm(timeStamp);
                             }
                         }
                     });

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.shevchenkodev.doctorcat.adapter.TabAdapter;
+import com.shevchenkodev.doctorcat.alarm.AlarmHelper;
 import com.shevchenkodev.doctorcat.datebase.DBHelper;
 import com.shevchenkodev.doctorcat.dialog.AddingTaskDialogFragmen;
 import com.shevchenkodev.doctorcat.fragment.CurrentTaskFragment;
@@ -45,10 +46,23 @@ public class MainActivity extends AppCompatActivity
         PreferenceHelper.getInstance().init(getApplicationContext());
         preferenceHelper = PreferenceHelper.getInstance();
         dbHelper = new DBHelper(getApplicationContext());
+        AlarmHelper.getInstance().init(getApplicationContext());
 
         fragmentManager = getFragmentManager();
         runSplash();
         setUI();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.activityResumed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MyApplication.activityPaused();
     }
 
     @Override
