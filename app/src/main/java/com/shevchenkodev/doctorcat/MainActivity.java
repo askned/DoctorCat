@@ -4,6 +4,7 @@ package com.shevchenkodev.doctorcat;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity
 
         fragmentManager = getFragmentManager();
         runSplash();
+        Ads.showBanner(this);
         setUI();
     }
 
@@ -76,6 +78,12 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

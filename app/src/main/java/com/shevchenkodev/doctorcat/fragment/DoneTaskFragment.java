@@ -25,7 +25,6 @@ import java.util.List;
 public class DoneTaskFragment extends TaskFragment {
 
 
-
     public DoneTaskFragment() {
         // Required empty public constructor
     }
@@ -65,7 +64,6 @@ public class DoneTaskFragment extends TaskFragment {
         // Inflate the layout for this fragment
         return rootView;
     }
-
 
 
     @Override
@@ -117,12 +115,20 @@ public class DoneTaskFragment extends TaskFragment {
     }
 
 
-
     @Override
     public void moveTask(ModelTask task) {
         if (task.getDate() != 0) {
             alarmHelper.setAlarm(task);
         }
         onTaskRestoreListener.onTaskRestore(task);
+    }
+
+    @Override
+    public void checkAdapter() {
+        if (adapter == null) {
+            adapter = new DoneTaskAdapter(this);
+            adapter.removeAllItems();
+            addTaskFromDB();
+        }
     }
 }
