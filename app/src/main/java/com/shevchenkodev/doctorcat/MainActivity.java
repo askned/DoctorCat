@@ -3,6 +3,7 @@ package com.shevchenkodev.doctorcat;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
@@ -96,6 +97,18 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_splash) {
             item.setChecked(!item.isChecked());
             preferenceHelper.putBoolean(PreferenceHelper.SPLASH_IS_INVISIBLE, item.isChecked());
+
+            return true;
+        }
+        if (id == R.id.add_pet) {
+            Intent intent = new Intent(MainActivity.this, PetActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+        if (id == R.id.setting) {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
 
             return true;
         }
