@@ -46,34 +46,41 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="16dp"
 
-            android:layout_alignRight="@+id/tilDialogTaskDate1"
-            android:layout_below="@id/tilDialogTaskDate1"
-            android:layout_alignEnd="@+id/tilDialogTaskDate1">
+            android:layout_below="@id/tilDialogTaskDate1">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView2"
-                android:src="@drawable/cat32" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/swPetType"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView2"
+                    android:src="@drawable/cat32" />
 
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="10dp" />
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/swPetType"
+                    android:textOff="Кошка"
+                    android:textOn="Собака"
 
-            <ImageView
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="10dp" />
 
-                android:layout_width="wrap_content"
+                <ImageView
 
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
 
-                android:src="@drawable/dog32" />
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+
+                    android:src="@drawable/dog32" />
+            </TableRow>
+
         </TableLayout>
 
 
