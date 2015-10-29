@@ -18,6 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "reminder_database";
 
     public static final String TASKS_TABLE = "tasks_table";
+    public static final String PET_TABLE = "pet_table";
 
     public static final String TASK_TITLE_COLUMN = "task_title";
     public static final String TASK_DATE_COLUMN = "task_date";
@@ -87,8 +88,17 @@ public class DBHelper extends SQLiteOpenHelper {
     public void removeTask(long timeStamp) {
         getWritableDatabase().delete(TASKS_TABLE, SELECTION_TIME_STAMP, new String[]{Long.toString(timeStamp)});
     }
+//
+public void savePet(ModelPet pet) {
+        ContentValues newValues1 = new ContentValues();
 
+        newValues1.put(TASK_TITLE_COLUMN, task.getTitle());
+        newValues1.put(TASK_DATE_COLUMN, task.getDate());
+        newValues1.put(TASK_STATUS_COLUMN, task.getStatus());
+      
 
-
+        getWritableDatabase().insert(PET_TABLE, null, newValues1);
+    }
+//
 
 }
