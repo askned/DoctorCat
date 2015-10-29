@@ -38,7 +38,7 @@ public class AddingPetDialog extends DialogFragment {
 
         TextInputLayout tilDate = (TextInputLayout) conteiner.findViewById(R.id.tilDialogTaskDate1);
         final EditText etDate = tilDate.getEditText();
-        tilTitle.setHint(getResources().getString(R.string.task_title));
+        tilTitle.setHint(getResources().getString(R.string.pet_name));
         tilDate.setHint(getResources().getString(R.string.task_date));
 
 
