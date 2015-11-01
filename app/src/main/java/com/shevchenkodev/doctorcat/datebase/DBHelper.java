@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import com.shevchenkodev.doctorcat.model.ModelPet;
 import com.shevchenkodev.doctorcat.model.ModelTask;
 
 /**
@@ -92,9 +93,9 @@ public class DBHelper extends SQLiteOpenHelper {
 public void savePet(ModelPet pet) {
         ContentValues newValues1 = new ContentValues();
 
-        newValues1.put(TASK_TITLE_COLUMN, task.getTitle());
-        newValues1.put(TASK_DATE_COLUMN, task.getDate());
-        newValues1.put(TASK_STATUS_COLUMN, task.getStatus());
+    newValues1.put(TASK_TITLE_COLUMN, pet.getPetName());
+    newValues1.put(TASK_DATE_COLUMN, pet.getPetBDay());
+    newValues1.put(TASK_STATUS_COLUMN, pet.getPetType());
       
 
         getWritableDatabase().insert(PET_TABLE, null, newValues1);

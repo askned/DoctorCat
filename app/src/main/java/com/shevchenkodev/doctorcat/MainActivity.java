@@ -27,6 +27,7 @@ import com.shevchenkodev.doctorcat.fragment.DoneTaskFragment;
 import com.shevchenkodev.doctorcat.fragment.SplashFragment;
 import com.shevchenkodev.doctorcat.fragment.TaskFragment;
 import com.shevchenkodev.doctorcat.model.ModelTask;
+import com.shevchenkodev.doctorcat.pet.PetActivity;
 
 
 public class MainActivity extends AppCompatActivity

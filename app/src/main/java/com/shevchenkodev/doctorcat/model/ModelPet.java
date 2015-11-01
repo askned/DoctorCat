@@ -13,9 +13,26 @@ public class ModelPet {
         return petType;
     }
 
+    public void setPetName(String petName) {
+        this.petName = petName;
+    }
+
+    public void setPetType(int petType) {
+        this.petType = petType;
+    }
+
+    public void setbDate(Long bDate) {
+        this.bDate = bDate;
+    }
+
     public String getPetName() {
 
         return petName;
+    }
+
+    public Long getPetBDay() {
+
+        return bDate;
     }
 
     public ModelPet() {

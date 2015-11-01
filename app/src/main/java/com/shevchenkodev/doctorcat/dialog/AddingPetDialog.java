@@ -1,5 +1,6 @@
 package com.shevchenkodev.doctorcat.dialog;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.shevchenkodev.doctorcat.R;
 import com.shevchenkodev.doctorcat.Utils;
@@ -22,6 +24,23 @@ import java.util.Calendar;
 
 
 public class AddingPetDialog extends DialogFragment {
+
+    AddingPetListener addingPetListener;
+
+    public interface AddingPetListener {
+        void onPetAdded(ModelPet newPet);
+
+        void onPetAddingCancel();
+    }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            addingPetListener = (AddingPetListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement AddingPetListener");
+        }
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -40,7 +59,10 @@ public class AddingPetDialog extends DialogFragment {
         final EditText etDate = tilDate.getEditText();
         tilTitle.setHint(getResources().getString(R.string.pet_name));
         tilDate.setHint(getResources().getString(R.string.task_date));
+        final Switch swPetType = (Switch) conteiner.findViewById(R.id.swPetType);
 
+        final Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + 1);
 
         builder.setView(conteiner);
 
@@ -48,7 +70,17 @@ public class AddingPetDialog extends DialogFragment {
         builder.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+//kot tyt
+                pet.setPetName(etTitle.getText().toString());
+                pet.setbDate(calendar.getTimeInMillis());
+                if (swPetType.isChecked()) {
+                    pet.setPetType(1);
+                } else {
+                    pet.setPetType(0);
+                }
 
+
+                addingPetListener.onPetAdded(pet);
 
                 dialog.dismiss();
             }
@@ -64,8 +96,6 @@ public class AddingPetDialog extends DialogFragment {
         AlertDialog alertDialog = builder.create();
 
 
-        final Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + 1);
         etDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

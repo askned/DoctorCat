@@ -43,7 +43,7 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
         <activity
-            android:name=".PetActivity"
+            android:name=".pet.PetActivity"
             android:label="@string/title_activity_pet"
             android:theme="@style/AppTheme"></activity>
     </application>
