@@ -29,6 +29,8 @@ public class PetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void addPet(ModelPet pet) {
         pets.add(pet);
+//        petFragment.addPet(pet);
+
         notifyItemInserted(getItemCount() - 1);
     }
 
@@ -41,7 +43,8 @@ public class PetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView title = (TextView) v.findViewById(R.id.tvTaskTitle);
         TextView date = (TextView) v.findViewById(R.id.tvTaskDate);
         //   CircleImageView priority = (CircleImageView) v.findViewById(R.id.cvTaskPriority);
-
+        ModelPet p1 = new ModelPet("Pet", 102L, 1);
+        pets.add(p1);
         return new TaskViewHolder(v, title, date);
 
 

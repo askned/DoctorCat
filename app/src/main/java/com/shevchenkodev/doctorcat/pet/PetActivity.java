@@ -2,7 +2,6 @@ package com.shevchenkodev.doctorcat.pet;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -26,13 +25,15 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+//        frag2 = new PetFragment();
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.add(R.id.petfragm, frag2);
+//        ft.commit();
         frag2 = new PetFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.add(R.id.petfragm, frag2);
-        ft.commit();
 
-        //fragmentManager = getFragmentManager();
-        //   getFragmentManager().beginTransaction().replace(R.id.petfragm, new PetFragment()).commit();
+
+        fragmentManager = getFragmentManager();
+        getFragmentManager().beginTransaction().replace(R.id.petfragm, new PetFragment()).commit();
 
         FloatingActionButton fabpet = (FloatingActionButton) findViewById(R.id.fabpet);
         fabpet.setOnClickListener(new View.OnClickListener() {

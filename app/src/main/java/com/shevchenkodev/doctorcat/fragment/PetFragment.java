@@ -16,17 +16,19 @@ import com.shevchenkodev.doctorcat.model.ModelPet;
  * Created by Администратор on 31.10.2015.
  */
 public class PetFragment extends Fragment {
-    protected RecyclerView recyclerView;
-    protected RecyclerView.LayoutManager layoutManager;
-    protected PetAdapter adapter;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    PetAdapter adapter;
 
+    public PetFragment() {
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_current_task, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_pet_view, container, false);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.rvCurrentTasks);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.rvCurrentTasks1);
 
         layoutManager = new LinearLayoutManager(getActivity());
 
@@ -40,6 +42,9 @@ public class PetFragment extends Fragment {
     }
 
     public void addPet(ModelPet newPet) {
+        adapter = new PetAdapter();
         adapter.addPet(newPet);
+
+
     }
 }
