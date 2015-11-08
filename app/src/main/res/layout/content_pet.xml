@@ -13,4 +13,8 @@
     tools:showIn="@layout/activity_pet"
     tools:context="com.shevchenkodev.doctorcat.pet.PetActivity">
 
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
 </RelativeLayout>

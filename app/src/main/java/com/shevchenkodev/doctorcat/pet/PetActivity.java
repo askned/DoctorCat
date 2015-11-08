@@ -7,17 +7,22 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.shevchenkodev.doctorcat.R;
 import com.shevchenkodev.doctorcat.dialog.AddingPetDialog;
-import com.shevchenkodev.doctorcat.fragment.PetFragment;
 import com.shevchenkodev.doctorcat.model.ModelPet;
+
+import java.util.ArrayList;
 
 public class PetActivity extends AppCompatActivity implements AddingPetDialog.AddingPetListener {
 
     FragmentManager fragmentManager;
-    PetFragment frag2;
+    ListView listView;
 
+    // public ArrayAdapter<String> adapter;
+    final ArrayList<String> names = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,16 +30,20 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        frag2 = new PetFragment();
-//        FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        ft.add(R.id.petfragm, frag2);
-//        ft.commit();
-        frag2 = new PetFragment();
+
+        ListView listView = (ListView) findViewById(R.id.listView1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, names);
+        names.add("Red");
+
+        // присваиваем адаптер списку
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+
 
 
         fragmentManager = getFragmentManager();
-        getFragmentManager().beginTransaction().replace(R.id.petfragm, new PetFragment()).commit();
-
         FloatingActionButton fabpet = (FloatingActionButton) findViewById(R.id.fabpet);
         fabpet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,14 +52,21 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
                 addingPetDialog.show(fragmentManager, "AddingPetDialog");
             }
         });
-        //    petFragment = new PetFragment();
+
     }
 
 
-    @Override
+
     public void onPetAdded(ModelPet newPet) {
-        frag2.addPet(newPet);
+
+        ListView listView = (ListView) findViewById(R.id.listView1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, names);
+        adapter.add(newPet.getPetName());
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
+
 
     @Override
     public void onPetAddingCancel() {

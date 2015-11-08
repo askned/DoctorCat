@@ -25,13 +25,15 @@ import java.util.Calendar;
 
 public class AddingPetDialog extends DialogFragment {
 
-    AddingPetListener addingPetListener;
+
 
     public interface AddingPetListener {
-        void onPetAdded(ModelPet newPet);
+        public void onPetAdded(ModelPet newPet);
 
         void onPetAddingCancel();
     }
+
+    AddingPetListener addingPetListener;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -80,9 +82,8 @@ public class AddingPetDialog extends DialogFragment {
                 }
 
 
-                addingPetListener.onPetAdded(pet);
-
                 dialog.dismiss();
+                addingPetListener.onPetAdded(pet);
             }
         }).setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
             @Override
