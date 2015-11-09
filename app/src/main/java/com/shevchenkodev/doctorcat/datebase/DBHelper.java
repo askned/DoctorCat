@@ -30,11 +30,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String TASK_TIME_STAMP_COLUMN = "task_time_stamp";
 
+    public static final String PAT_NAME_COLUMN = "pet_name";
+    public static final String PAT_AGE_COLUMN = "pet_age";
+    public static final String PAT_TYPE_COLUMN = "pet_type";
+
     private static final String TASKS_TABLE_CREATE_SCRIPT = "CREATE TABLE "
             + TASKS_TABLE + " (" + BaseColumns._ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK_TITLE_COLUMN + " TEXT NOT NULL, "
             + TASK_DATE_COLUMN + " LONG, " + TASK_PRIORITY_COLUMN + " INTEGER, "
             + TASK_STATUS_COLUMN + " INTEGER, " + TASK_TIME_STAMP_COLUMN + " LONG);";
+            
+     private static final String PET_TABLE_CREATE_SCRIPT = "CREATE TABLE "
+            + PET_TABLE + " (" + BaseColumns._ID
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PAT_NAME_COLUMN + " TEXT NOT NULL, "
+            + PAT_AGE_COLUMN + " LONG, " + PAT_TYPE_COLUMN + " INTEGER);";
 
 
     public static final String SELECTION_STATUS = DBHelper.TASK_STATUS_COLUMN + " = ?";
@@ -56,6 +65,8 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TASKS_TABLE_CREATE_SCRIPT);
+        //new
+          db.execSQL(PET_TABLE_CREATE_SCRIPT);
     }
 
     @Override
@@ -93,9 +104,9 @@ public class DBHelper extends SQLiteOpenHelper {
 public void savePet(ModelPet pet) {
         ContentValues newValues1 = new ContentValues();
 
-    newValues1.put(TASK_TITLE_COLUMN, pet.getPetName());
-    newValues1.put(TASK_DATE_COLUMN, pet.getPetBDay());
-    newValues1.put(TASK_STATUS_COLUMN, pet.getPetType());
+    newValues1.put(PAT_NAME_COLUMN, pet.getPetName());
+    newValues1.put(PAT_AGE_COLUMN, pet.getPetBDay());
+    newValues1.put(PAT_TYPE_COLUMN, pet.getPetType());
       
 
         getWritableDatabase().insert(PET_TABLE, null, newValues1);
