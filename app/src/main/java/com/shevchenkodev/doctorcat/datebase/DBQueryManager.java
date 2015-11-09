@@ -59,5 +59,28 @@ public class DBQueryManager {
 
         return tasks;
     }
+    
+    
+ public List<ModelPet> getPets(String selection, String[] selectionArgs, String orderBy) {
+        List<ModelPet> pets = new ArrayList<>();
+
+        Cursor c = database.query(DBHelper.PET_TABLE, null, selection, selectionArgs, null, null, orderBy);
+
+        if (c.moveToFirst()) {
+            do {
+                String name = c.getString(c.getColumnIndex(DBHelper.TASK_TITLE_COLUMN));
+                long date = c.getLong(c.getColumnIndex(DBHelper.TASK_DATE_COLUMN));
+                int type = c.getInt(c.getColumnIndex(DBHelper.TASK_PRIORITY_COLUMN));
+               
+
+                ModelPet modelPet = new ModelPet(name, date, type);
+                pets.add(modelPet);
+            } while (c.moveToNext());
+        }
+        c.close();
+
+        return pets;
+    }
+
 
 }
