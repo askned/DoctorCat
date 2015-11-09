@@ -68,9 +68,9 @@ public class DBQueryManager {
 
         if (c.moveToFirst()) {
             do {
-                String name = c.getString(c.getColumnIndex(DBHelper.TASK_TITLE_COLUMN));
-                long date = c.getLong(c.getColumnIndex(DBHelper.TASK_DATE_COLUMN));
-                int type = c.getInt(c.getColumnIndex(DBHelper.TASK_PRIORITY_COLUMN));
+                String name = c.getString(c.getColumnIndex(DBHelper.PAT_NAME_COLUMN));
+                long date = c.getLong(c.getColumnIndex(DBHelper.PAT_AGE_COLUMN));
+                int type = c.getInt(c.getColumnIndex(DBHelper.PAT_TYPE_COLUMN));
                
 
                 ModelPet modelPet = new ModelPet(name, date, type);
