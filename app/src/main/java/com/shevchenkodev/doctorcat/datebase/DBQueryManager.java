@@ -3,6 +3,7 @@ package com.shevchenkodev.doctorcat.datebase;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.shevchenkodev.doctorcat.model.ModelPet;
 import com.shevchenkodev.doctorcat.model.ModelTask;
 
 import java.util.ArrayList;

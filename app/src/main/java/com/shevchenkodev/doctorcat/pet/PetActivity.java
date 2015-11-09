@@ -6,22 +6,26 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.shevchenkodev.doctorcat.R;
+import com.shevchenkodev.doctorcat.datebase.DBHelper;
 import com.shevchenkodev.doctorcat.dialog.AddingPetDialog;
 import com.shevchenkodev.doctorcat.model.ModelPet;
+import com.shevchenkodev.doctorcat.model.ModelTask;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PetActivity extends AppCompatActivity implements AddingPetDialog.AddingPetListener {
 
     FragmentManager fragmentManager;
     ListView listView;
-
-    // public ArrayAdapter<String> adapter;
+    public DBHelper dbHelper;
+    public ArrayAdapter<String> adapter;
     final ArrayList<String> names = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +69,28 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
         adapter.add(newPet.getPetName());
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        dbHelper = new DBHelper(getApplicationContext());
+        dbHelper.savePet(newPet);
     }
 
 
     @Override
     public void onPetAddingCancel() {
 
+    }
+
+    public void findTasks(String title) {
+        adapter.removeAllItems();
+        List<ModelTask> tasks = new ArrayList<>();
+        tasks.addAll(activity.dbHelper.query().getTasks(DBHelper.SELECTION_LIKE_TITLE + " AND "
+                        + DBHelper.SELECTION_STATUS + " OR " + DBHelper.SELECTION_STATUS,
+                new String[]{"%" + title + "%", Integer.toString(ModelTask.STATUS_CURRENT),
+                        Integer.toString(ModelTask.STATUS_OVERDUE)}, DBHelper.TASK_DATE_COLUMN));
+        for (int i = 0; i < tasks.size(); i++) {
+            Log.d("data", "Title = " + tasks.get(i).getTitle());
+            addTask(tasks.get(i), false);
+
+        }
     }
 }
 
