@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTaskDone(ModelTask task) {
-        doneTaskFragment.addTask(task, true);
+        doneTaskFragment.addTask(task, false);
     }
 
     @Override

@@ -60,12 +60,12 @@ public class DBQueryManager {
 
         return tasks;
     }
-    
-    
- public List<ModelPet> getPets(String selection, String[] selectionArgs, String orderBy) {
+
+
+    public List<ModelPet> getPets() {
         List<ModelPet> pets = new ArrayList<>();
 
-        Cursor c = database.query(DBHelper.PET_TABLE, null, selection, selectionArgs, null, null, orderBy);
+        Cursor c = database.query(DBHelper.PET_TABLE, null, null, null, null, null, DBHelper.PAT_NAME_COLUMN);
 
         if (c.moveToFirst()) {
             do {

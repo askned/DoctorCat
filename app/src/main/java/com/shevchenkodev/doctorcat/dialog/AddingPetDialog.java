@@ -28,7 +28,7 @@ public class AddingPetDialog extends DialogFragment {
 
 
     public interface AddingPetListener {
-        public void onPetAdded(ModelPet newPet);
+        public void onPetAdded(ModelPet newPet, boolean saveToDB);
 
         void onPetAddingCancel();
     }
@@ -83,7 +83,7 @@ public class AddingPetDialog extends DialogFragment {
 
 
                 dialog.dismiss();
-                addingPetListener.onPetAdded(pet);
+                addingPetListener.onPetAdded(pet, true);
             }
         }).setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
             @Override
