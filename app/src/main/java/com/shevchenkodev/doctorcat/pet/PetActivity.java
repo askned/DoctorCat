@@ -81,17 +81,27 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
 
     public void findTasks(String title) {
         adapter.removeAllItems();
-        List<ModelTask> tasks = new ArrayList<>();
-        tasks.addAll(activity.dbHelper.query().getTasks(DBHelper.SELECTION_LIKE_TITLE + " AND "
+        List<ModelPet> pets = new ArrayList<>();
+        pets.addAll(activity.dbHelper.query().getTasks(DBHelper.SELECTION_LIKE_TITLE + " AND "
                         + DBHelper.SELECTION_STATUS + " OR " + DBHelper.SELECTION_STATUS,
-                new String[]{"%" + title + "%", Integer.toString(ModelTask.STATUS_CURRENT),
-                        Integer.toString(ModelTask.STATUS_OVERDUE)}, DBHelper.TASK_DATE_COLUMN));
-        for (int i = 0; i < tasks.size(); i++) {
-            Log.d("data", "Title = " + tasks.get(i).getTitle());
-            addTask(tasks.get(i), false);
+                new String[]{"%" + title + "%", Integer.toString(ModelPet.STATUS_CURRENT),
+                        Integer.toString(ModelPet.STATUS_OVERDUE)}, DBHelper.TASK_DATE_COLUMN));
+        for (int i = 0; i < pets.size(); i++) {
+            Log.d("data", "Title = " + pets.get(i).getTitle());
+            addTask(pets.get(i), false);
 
         }
     }
+      public void addTaskFromDB() {
+        List<ModelPet> pets = new ArrayList<>();
+        pets.addAll(activity.dbHelper.query().getPets(DBHelper.SELECTION_STATUS + " OR "
+                + DBHelper.SELECTION_STATUS, new String[]{Integer.toString(ModelPet.STATUS_CURRENT),
+                Integer.toString(ModelPet.STATUS_OVERDUE)}, DBHelper.TASK_DATE_COLUMN));
+        for (int i = 0; i < pets.size(); i++) {
+            addPet(pets.get(i), false);
+        }
+    }
+
 }
 
 
