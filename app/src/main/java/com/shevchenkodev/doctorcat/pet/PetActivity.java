@@ -21,9 +21,9 @@ import java.util.List;
 public class PetActivity extends AppCompatActivity implements AddingPetDialog.AddingPetListener {
 
     FragmentManager fragmentManager;
-    ListView listView;
+
     public DBHelper dbHelper;
-    public ArrayAdapter<String> adapter;
+
     final ArrayList<String> names = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
         ListView listView = (ListView) findViewById(R.id.listView1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, names);
-        names.add("Red");
+
 
         // присваиваем адаптер списку
         listView.setAdapter(adapter);

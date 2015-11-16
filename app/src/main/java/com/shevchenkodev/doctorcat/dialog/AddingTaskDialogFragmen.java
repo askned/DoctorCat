@@ -19,15 +19,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import com.shevchenkodev.doctorcat.MainActivity;
 import com.shevchenkodev.doctorcat.R;
 import com.shevchenkodev.doctorcat.Utils;
 import com.shevchenkodev.doctorcat.alarm.AlarmHelper;
 import com.shevchenkodev.doctorcat.model.ModelTask;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AddingTaskDialogFragmen extends DialogFragment {
     private AddingTaskListener addingTaskListener;
+    final ArrayList<String> names = new ArrayList<String>();
+
+    public MainActivity activity;
 
     public interface AddingTaskListener {
         void onTaskAdded(ModelTask newTask);
@@ -75,8 +81,22 @@ public class AddingTaskDialogFragmen extends DialogFragment {
 
         final ModelTask task = new ModelTask();
 
-        ArrayAdapter<String> priorityAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_dropdown_item, ModelTask.PRIORITY_LEVELS);
+        //   ArrayAdapter<String> priorityAdapter = new ArrayAdapter<String>(getActivity(),
+        //           android.R.layout.simple_spinner_dropdown_item, ModelTask.PRIORITY_LEVELS);
+        ArrayAdapter<String> priorityAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_dropdown_item, names);
+//        activity.dbHelper = new DBHelper(activity.getApplicationContext());
+        List<String> names = new ArrayList<>();
+        //  names.addAll(activity.dbHelper.query().getNames());
+
+//        for (int i = 0; i < names.size(); i++) {
+//
+//            priorityAdapter.add(names.get(i));
+//        }
+        priorityAdapter.addAll(activity.dbHelper.query().getNames());
+
+
+
 
         spPriority.setAdapter(priorityAdapter);
 

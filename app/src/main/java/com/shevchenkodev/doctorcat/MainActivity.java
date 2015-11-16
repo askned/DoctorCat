@@ -29,6 +29,9 @@ import com.shevchenkodev.doctorcat.fragment.TaskFragment;
 import com.shevchenkodev.doctorcat.model.ModelTask;
 import com.shevchenkodev.doctorcat.pet.PetActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity
         implements AddingTaskDialogFragmen.AddingTaskListener,
@@ -55,7 +58,8 @@ public class MainActivity extends AppCompatActivity
 
         fragmentManager = getFragmentManager();
         runSplash();
-        Ads.showBanner(this);
+
+        // Ads.showBanner(this);
         setUI();
     }
 
@@ -226,5 +230,11 @@ public class MainActivity extends AppCompatActivity
     public void onTaskEdited(ModelTask updatedTask) {
         currentTaskFragment.updateTask(updatedTask);
         dbHelper.update().task(updatedTask);
+    }
+
+    public List<String> getNames() {
+        List<String> names = new ArrayList<>();
+        names.addAll(dbHelper.query().getNames());
+        return names;
     }
 }

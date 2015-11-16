@@ -83,5 +83,21 @@ public class DBQueryManager {
         return pets;
     }
 
+    public List<String> getNames() {
+        List<String> pets = new ArrayList<>();
 
+        Cursor c = database.query(DBHelper.PET_TABLE, null, null, null, null, null, DBHelper.PAT_NAME_COLUMN);
+
+        if (c.moveToFirst()) {
+            do {
+                String name = c.getString(c.getColumnIndex(DBHelper.PAT_NAME_COLUMN));
+
+                //  ModelPet modelPet = new ModelPet(name, date, type);
+                pets.add(name);
+            } while (c.moveToNext());
+        }
+        c.close();
+
+        return pets;
+    }
 }
