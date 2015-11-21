@@ -19,13 +19,14 @@ import android.widget.Switch;
 import com.shevchenkodev.doctorcat.R;
 import com.shevchenkodev.doctorcat.Utils;
 import com.shevchenkodev.doctorcat.model.ModelPet;
+import com.shevchenkodev.doctorcat.pet.PetActivity;
 
 import java.util.Calendar;
 
 
 public class AddingPetDialog extends DialogFragment {
 
-
+    PetActivity activity;
 
     public interface AddingPetListener {
         public void onPetAdded(ModelPet newPet, boolean saveToDB);
@@ -48,7 +49,7 @@ public class AddingPetDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.dialog_title);
+        builder.setTitle(R.string.pet_dialogtit);
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View conteiner = inflater.inflate(R.layout.dialog_pet, null);

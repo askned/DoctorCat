@@ -31,7 +31,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                 resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        builder.setContentTitle("Reminder");
+        builder.setContentTitle("Pet Remainder");
         builder.setContentText(title);
         builder.setColor(context.getResources().getColor(color));
         builder.setSmallIcon(R.drawable.ic_check_white_48dp);

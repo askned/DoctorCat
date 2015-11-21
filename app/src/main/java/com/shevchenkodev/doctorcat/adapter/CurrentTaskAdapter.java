@@ -103,7 +103,7 @@ public class CurrentTaskAdapter extends TaskAdapter {
             taskViewHolder.title.setTextColor(resources.getColor(R.color.primary_text_default_material_light));
             taskViewHolder.date.setTextColor(resources.getColor(R.color.secondary_text_default_material_light));
             taskViewHolder.priority.setColorFilter(resources.getColor(task.getPriorityColor()));
-            taskViewHolder.priority.setImageResource(R.drawable.ic_check_circle_white_48dp);
+            taskViewHolder.priority.setImageResource(R.drawable.ic_checkbox_blank_circle);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

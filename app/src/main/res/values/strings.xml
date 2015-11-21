@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Doctor Cat</string>
+    <string name="app_name">Pet Remainder</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -14,7 +14,7 @@
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_error_empty_title">Please, enter the title.</string>
-
+    <string name="dialog_error_empty_name">Please, enter the Pet name.</string>
 
     <string name="dialog_removing_message">Are you sure want to delete this task?</string>
     <string name="removed">Removed</string>
@@ -22,6 +22,7 @@
 
     <string name="task_title">Title</string>
     <string name="task_date">Date</string>
+    <string name="petbd_date">Pet birthday</string>
     <string name="task_time">Time</string>
 
     <string name="separator_overdue">Overdue</string>
@@ -88,6 +89,9 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_pet">Pets</string>
-    <string name="pet_name">Кличка</string>
+    <string name="pet_name">Pet name</string>
+    <string name="pet_dialogtit">Adding Pet</string>
     <string name="all_pet">All Pets</string>
+    <string name="pressplus">Push + button for adding Pet</string>
+    <string name="pick_color">Set task</string>
 </resources>

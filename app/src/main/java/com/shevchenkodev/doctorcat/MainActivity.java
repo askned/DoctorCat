@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity
     TaskFragment currentTaskFragment;
     TaskFragment doneTaskFragment;
     SearchView searchView;
+    List<String> names = new ArrayList<>();
 
     public DBHelper dbHelper;
 
@@ -57,10 +58,15 @@ public class MainActivity extends AppCompatActivity
         AlarmHelper.getInstance().init(getApplicationContext());
 
         fragmentManager = getFragmentManager();
-        runSplash();
+        //   runSplash();
+
 
         // Ads.showBanner(this);
         setUI();
+        names.addAll(dbHelper.query().getNames());
+        if (names.size() == 0) {
+            startPetActivity();
+        }
     }
 
     @Override
@@ -106,8 +112,7 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         if (id == R.id.add_pet) {
-            Intent intent = new Intent(MainActivity.this, PetActivity.class);
-            startActivity(intent);
+            startPetActivity();
 
             return true;
         }
@@ -236,5 +241,10 @@ public class MainActivity extends AppCompatActivity
         List<String> names = new ArrayList<>();
         names.addAll(dbHelper.query().getNames());
         return names;
+    }
+
+    public void startPetActivity() {
+        Intent intent = new Intent(MainActivity.this, PetActivity.class);
+        startActivity(intent);
     }
 }

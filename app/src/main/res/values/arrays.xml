@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="colors_array">
+        <item>Walk</item>
+        <item>Feed</item>
+        <item>Give bath</item>
+        <item>Clip nail</item>
+        <item>Groom</item>
+        <item>Train</item>
+        <item>Doctor visit</item>
+        <item>Give medication</item>
+        <item>Flea treatment</item>
+        <item>Vaccination</item>
+    </string-array>
+</resources>
+
+

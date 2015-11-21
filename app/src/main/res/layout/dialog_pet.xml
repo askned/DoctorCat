@@ -17,6 +17,7 @@
             android:layout_marginTop="16dp">
 
             <EditText
+                android:inputType="textCapSentences|text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />

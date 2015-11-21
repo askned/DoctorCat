@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
@@ -26,6 +27,7 @@ import com.shevchenkodev.doctorcat.alarm.AlarmHelper;
 import com.shevchenkodev.doctorcat.model.ModelTask;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -72,6 +74,8 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         final TextInputLayout tilTime = (TextInputLayout) container.findViewById(R.id.tilDialogTaskTime);
         final EditText etTime = tilTime.getEditText();
 
+        ImageView buttonlist = (ImageView) container.findViewById(R.id.imageList);
+
         Spinner spPriority = (Spinner) container.findViewById(R.id.spDialogTaskPriority);
         final Spinner spName = (Spinner) container.findViewById(R.id.spDialogTaskName);
         tilTitle.setHint(getResources().getString(R.string.task_title));
@@ -95,6 +99,24 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         nameAdapter.addAll(activity.dbHelper.query().getNames());
 
 
+        buttonlist = (ImageView) container.findViewById(R.id.imageList);
+        buttonlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(R.string.pick_color)
+                        .setItems(R.array.colors_array, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String[] myResArray = getResources().getStringArray(R.array.colors_array);
+                                List<String> myResArrayList = Arrays.asList(myResArray);
+
+                                etTitle.setText(myResArrayList.get(which));
+                            }
+                        });
+                builder.show();
+                ;
+            }
+        });
 
 
         spPriority.setAdapter(priorityAdapter);
@@ -185,6 +207,8 @@ public class AddingTaskDialogFragmen extends DialogFragment {
 
                     AlarmHelper alarmHelper = AlarmHelper.getInstance();
                     alarmHelper.setAlarm(task);
+                } else {
+                    task.setDate(calendar.getTimeInMillis());
                 }
                 task.setStatus(ModelTask.STATUS_CURRENT);
                 addingTaskListener.onTaskAdded(task);
@@ -219,7 +243,7 @@ public class AddingTaskDialogFragmen extends DialogFragment {
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         if (s.length() == 0) {
                             positiveButton.setEnabled(false);
-                            tilTitle.setError(getResources().getString(R.string.dialog_error_empty_title));
+                            tilTitle.setError(getResources().getString(R.string.dialog_error_empty_name));
                         } else {
                             positiveButton.setEnabled(true);
                             tilTitle.setErrorEnabled(false);
