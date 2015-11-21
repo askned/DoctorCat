@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String SELECTION_TIME_STAMP = TASK_TIME_STAMP_COLUMN + " = ?";
 
-
+    public static final String SELECTION_PET = PAT_NAME_COLUMN + " = ?";
 
     private DBQueryManager queryManager;
     private DBUpdateManager updateManager;
@@ -101,6 +101,10 @@ public class DBHelper extends SQLiteOpenHelper {
         getWritableDatabase().delete(TASKS_TABLE, SELECTION_TIME_STAMP, new String[]{Long.toString(timeStamp)});
     }
 //
+public void removePet(String petName) {
+    getWritableDatabase().delete(PET_TABLE, SELECTION_PET, new String[]{petName});
+}
+
 public void savePet(ModelPet pet) {
         ContentValues newValues1 = new ContentValues();
 

@@ -89,5 +89,5 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_pet">Pets</string>
     <string name="pet_name">Кличка</string>
-
+    <string name="all_pet">All Pets</string>
 </resources>

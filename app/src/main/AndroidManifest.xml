@@ -45,7 +45,11 @@
         <activity
             android:name=".pet.PetActivity"
             android:label="@string/title_activity_pet"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shevchenkodev.doctorcat.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

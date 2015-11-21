@@ -1,14 +1,19 @@
 package com.shevchenkodev.doctorcat.pet;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.shevchenkodev.doctorcat.R;
 import com.shevchenkodev.doctorcat.datebase.DBHelper;
@@ -23,17 +28,21 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
     FragmentManager fragmentManager;
 
     public DBHelper dbHelper;
+    String name;
+    ArrayAdapter adapter;
 
     final ArrayList<String> names = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_pet);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         dbHelper = new DBHelper(getApplicationContext());
         addPetFromDB();
-        ListView listView = (ListView) findViewById(R.id.listView1);
+        final ListView listView = (ListView) findViewById(R.id.listView1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, names);
 
@@ -55,6 +64,13 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                name = listView.getItemAtPosition(position).toString();
+                showDialog(position);
+            }
+        });
     }
 
 
@@ -82,6 +98,7 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
 
 
     public void addPetFromDB() {
+
         List<ModelPet> pets = new ArrayList<>();
         pets.addAll(dbHelper.query().getPets());
 
@@ -90,7 +107,52 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
         }
     }
 
+    @Override
+    protected Dialog onCreateDialog(int id) {
+
+
+        final String[] mCatsName = {"Edit", "Deleta", "Cancel"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Do with pet"); // заголовок для диалога
+
+        builder.setItems(mCatsName, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+
+//                Toast.makeText(getApplicationContext(),
+//                        "Pet " + mCatsName[item],
+//                        Toast.LENGTH_SHORT).show();
+
+                switch (item) {
+                    case 0:
+                        Toast.makeText(getApplicationContext(),
+                                "Edit pet",
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    case 1:
+                        dbHelper.removePet(name);
+                        names.clear();
+                        Toast.makeText(getApplicationContext(),
+                                "Pet deleted",
+                                Toast.LENGTH_SHORT).show();
+                        addPetFromDB();
+                        return;
+                    case 2:
+                        return;
+                }
+
+
+            }
+        });
+        builder.setCancelable(false);
+
+        return builder.create();
+    }
+
 
 }
+
+
 
 

@@ -34,6 +34,7 @@ public class AddingTaskDialogFragmen extends DialogFragment {
     final ArrayList<String> names = new ArrayList<String>();
 
     public MainActivity activity;
+    String petName;
 
     public interface AddingTaskListener {
         void onTaskAdded(ModelTask newTask);
@@ -72,7 +73,7 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         final EditText etTime = tilTime.getEditText();
 
         Spinner spPriority = (Spinner) container.findViewById(R.id.spDialogTaskPriority);
-
+        final Spinner spName = (Spinner) container.findViewById(R.id.spDialogTaskName);
         tilTitle.setHint(getResources().getString(R.string.task_title));
         tilDate.setHint(getResources().getString(R.string.task_date));
         tilTime.setHint(getResources().getString(R.string.task_time));
@@ -81,29 +82,29 @@ public class AddingTaskDialogFragmen extends DialogFragment {
 
         final ModelTask task = new ModelTask();
 
-        //   ArrayAdapter<String> priorityAdapter = new ArrayAdapter<String>(getActivity(),
-        //           android.R.layout.simple_spinner_dropdown_item, ModelTask.PRIORITY_LEVELS);
-        ArrayAdapter<String> priorityAdapter = new ArrayAdapter<>(getActivity(),
+        ArrayAdapter<String> priorityAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_dropdown_item, ModelTask.PRIORITY_LEVELS);
+        ArrayAdapter<String> nameAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_dropdown_item, names);
-//        activity.dbHelper = new DBHelper(activity.getApplicationContext());
-        List<String> names = new ArrayList<>();
-        //  names.addAll(activity.dbHelper.query().getNames());
 
-//        for (int i = 0; i < names.size(); i++) {
-//
-//            priorityAdapter.add(names.get(i));
-//        }
-        priorityAdapter.addAll(activity.dbHelper.query().getNames());
+
+        List<String> names = new ArrayList<>();
+        activity = (MainActivity) getActivity();
+
+        nameAdapter.add(getString(R.string.all_pet));
+        nameAdapter.addAll(activity.dbHelper.query().getNames());
 
 
 
 
         spPriority.setAdapter(priorityAdapter);
+        spName.setAdapter(nameAdapter);
 
         spPriority.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 task.setPriority(position);
+
             }
 
             @Override
@@ -171,7 +172,13 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         builder.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                task.setTitle(etTitle.getText().toString());
+                if (spName.getSelectedItem().toString().equals(getString(R.string.all_pet))) {
+                    petName = " ";
+                } else {
+                    petName = spName.getSelectedItem().toString() + ": ";
+                }
+                String title_task = petName + etTitle.getText().toString();
+                task.setTitle(title_task);
                 task.setStatus(ModelTask.STATUS_CURRENT);
                 if (etDate.length() != 0 || etTime.length() != 0) {
                     task.setDate(calendar.getTimeInMillis());

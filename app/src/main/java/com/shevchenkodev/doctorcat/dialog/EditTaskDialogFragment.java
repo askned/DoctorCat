@@ -87,8 +87,8 @@ public class EditTaskDialogFragment extends DialogFragment {
         final EditText etTime = tilTime.getEditText();
 
         Spinner spPriority = (Spinner) container.findViewById(R.id.spDialogTaskPriority);
-
-
+        Spinner spName = (Spinner) container.findViewById(R.id.spDialogTaskName);
+        spName.setVisibility(View.INVISIBLE);
         etTitle.setText(task.getTitle());
         etTitle.setSelection(etTitle.length());
         if (task.getDate() != 0) {
