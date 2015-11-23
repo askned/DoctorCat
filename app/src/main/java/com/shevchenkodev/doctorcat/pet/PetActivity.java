@@ -86,7 +86,9 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
         ListView listView = (ListView) findViewById(R.id.listView1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, names);
-        adapter.add(newPet.getPetName());
+        if (newPet != null) {
+            adapter.add(newPet.getPetName());
+        }
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         dbHelper = new DBHelper(getApplicationContext());
@@ -112,6 +114,7 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
         for (int i = 0; i < pets.size(); i++) {
             onPetAdded(pets.get(i), false);
         }
+
     }
 
     @Override
@@ -119,10 +122,10 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
 
 
         //  final String[] mCatsName = {"Edit", "Deleta", "Cancel"};
-        final String[] mCatsName = {"Show tasks", "Deleta", "Cancel"};
+        final String[] mCatsName = {getString(R.string.showtask), getString(R.string.del), getString(R.string.censel)};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Do with pet"); // заголовок для диалога
+        builder.setTitle(R.string.petlist); // заголовок для диалога
 
         builder.setItems(mCatsName, new DialogInterface.OnClickListener() {
             @Override
@@ -138,14 +141,18 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
                         return;
                     case 1:
                         dbHelper.removePet(name);
-                        names.clear();
-                        Toast.makeText(getApplicationContext(),
-                                "Pet deleted",
-                                Toast.LENGTH_SHORT).show();
-                        if (names.size() == 0) {
-                            DialogFragment addingPetDialog = new AddingPetDialog();
-                            addingPetDialog.show(fragmentManager, "AddingPetDialog");
+                        if (names.size() == 1) {
+                            onPetAdded(null, false);
                         }
+                        names.clear();
+
+                        Toast.makeText(getApplicationContext(),
+                                R.string.delpet,
+                                Toast.LENGTH_SHORT).show();
+                        //   if (names.size() == 0) {
+                        //       DialogFragment addingPetDialog = new AddingPetDialog();
+                        //      addingPetDialog.show(fragmentManager, "AddingPetDialog");
+                        //  }
                         addPetFromDB();
                         return;
                     case 2:

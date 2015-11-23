@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">Pet Remainder</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="do_not_show_splash">Don\'t show splash</string>
 
     <string name="current_task">Current</string>
     <string name="done_task">Done</string>
 
     <string name="dialog_title">Adding task</string>
-    <string name="dialog_ok">OK</string>
+    <string name="dialog_ok" translatable="false">OK</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_error_empty_title">Please, enter the title.</string>
     <string name="dialog_error_empty_name">Please, enter the Pet name.</string>
@@ -29,7 +29,7 @@
     <string name="separator_today">Today</string>
     <string name="separator_tomorrow">Tomorrow</string>
     <string name="separator_future">Future</string>
-    <string name="banner_ad_unit_id">ca-app-pub-7163115318316941/9319363313</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-7163115318316941/9319363313</string>
     <string name="title_activity_settings">Settings</string>
     <string name="show_pet">Show pets</string>
 
@@ -39,43 +39,19 @@
     <string name="pref_header_general">General</string>
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contactbased on your message history</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contactbased on your task history</string>
 
     <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_default_display_name" translatable="false">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
+    <string name="pref_title_add_friends_to_messages">Add friends to task</string>
+
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data sync</string>
 
     <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
+
 
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
@@ -94,4 +70,55 @@
     <string name="all_pet">All Pets</string>
     <string name="pressplus">Push + button for adding Pet</string>
     <string name="pick_color">Set task</string>
+    <string name="cat">Cat</string>
+    <string name="dog">Dog</string>
+    <string name="petlist">Do with pet..</string>
+    <string name="delpet">Pet deleted</string>
+    <string name="showtask">Show tasks</string>
+    <string name="del">Delete</string>
+    <string name="censel">Cancel</string>
+    <string-array name="priority_array">
+        <item>Low Priority</item>
+        <item>Normal Priority</item>
+        <item>High Priority</item>
+    </string-array>
+
+    <string-array name="colors_array">
+        <item>Walk</item>
+        <item>Feed</item>
+        <item>Give bath</item>
+        <item>Clip nail</item>
+        <item>Groom</item>
+        <item>Train</item>
+        <item>Doctor visit</item>
+        <item>Give medication</item>
+        <item>Flea treatment</item>
+        <item>Vaccination</item>
+    </string-array>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
 </resources>

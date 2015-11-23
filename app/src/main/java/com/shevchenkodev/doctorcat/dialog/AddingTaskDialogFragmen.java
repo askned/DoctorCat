@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -87,7 +88,8 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         final ModelTask task = new ModelTask();
 
         ArrayAdapter<String> priorityAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_dropdown_item, ModelTask.PRIORITY_LEVELS);
+                android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.priority_array));
+        //ModelTask.PRIORITY_LEVELS);
         ArrayAdapter<String> nameAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_dropdown_item, names);
 
@@ -167,6 +169,7 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         etTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (etTime.length() == 0) {
                     etTime.setText(" ");
                 }
@@ -188,6 +191,7 @@ public class AddingTaskDialogFragmen extends DialogFragment {
                     }
                 };
                 timePickerFragment.show(getFragmentManager(), "TimePickerFragment");
+
             }
         });
 
@@ -259,5 +263,10 @@ public class AddingTaskDialogFragmen extends DialogFragment {
         });
 
         return alertDialog;
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 }

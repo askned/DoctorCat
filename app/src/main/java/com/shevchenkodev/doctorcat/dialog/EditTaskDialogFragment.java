@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
@@ -88,7 +89,10 @@ public class EditTaskDialogFragment extends DialogFragment {
 
         Spinner spPriority = (Spinner) container.findViewById(R.id.spDialogTaskPriority);
         Spinner spName = (Spinner) container.findViewById(R.id.spDialogTaskName);
+        ImageView imageView = (ImageView) container.findViewById(R.id.imageList);
         spName.setVisibility(View.INVISIBLE);
+
+        imageView.setVisibility(View.INVISIBLE);
         etTitle.setText(task.getTitle());
         etTitle.setSelection(etTitle.length());
         if (task.getDate() != 0) {
@@ -105,7 +109,7 @@ public class EditTaskDialogFragment extends DialogFragment {
 
 
         ArrayAdapter<String> priorityAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_dropdown_item, ModelTask.PRIORITY_LEVELS);
+                android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.priority_array));
 
         spPriority.setAdapter(priorityAdapter);
 

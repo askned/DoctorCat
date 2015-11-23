@@ -61,7 +61,7 @@ public class AddingPetDialog extends DialogFragment {
         TextInputLayout tilDate = (TextInputLayout) conteiner.findViewById(R.id.tilDialogTaskDate1);
         final EditText etDate = tilDate.getEditText();
         tilTitle.setHint(getResources().getString(R.string.pet_name));
-        tilDate.setHint(getResources().getString(R.string.task_date));
+        tilDate.setHint(getResources().getString(R.string.petbd_date));
         final Switch swPetType = (Switch) conteiner.findViewById(R.id.swPetType);
 
         final Calendar calendar = Calendar.getInstance();
@@ -130,7 +130,7 @@ public class AddingPetDialog extends DialogFragment {
                 final Button positiveButton = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE);
                 if (etTitle.length() == 0) {
                     positiveButton.setEnabled(false);
-                    tilTitle.setError(getResources().getString(R.string.dialog_error_empty_title));
+                    tilTitle.setError(getResources().getString(R.string.dialog_error_empty_name));
                 }
 
                 etTitle.addTextChangedListener(new TextWatcher() {
@@ -143,7 +143,7 @@ public class AddingPetDialog extends DialogFragment {
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         if (s.length() == 0) {
                             positiveButton.setEnabled(false);
-                            tilTitle.setError(getResources().getString(R.string.dialog_error_empty_title));
+                            tilTitle.setError(getResources().getString(R.string.dialog_error_empty_name));
                         } else {
                             positiveButton.setEnabled(true);
                             tilTitle.setErrorEnabled(false);
