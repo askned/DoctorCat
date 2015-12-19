@@ -77,10 +77,22 @@
     <string name="showtask">Show tasks</string>
     <string name="del">Delete</string>
     <string name="censel">Cancel</string>
+    <string name="enterweight">Enter weight in kilograms</string>
     <string-array name="priority_array">
         <item>Low Priority</item>
         <item>Normal Priority</item>
         <item>High Priority</item>
+    </string-array>
+    <string-array name="pet_type">
+        <item>Cat</item>
+        <item>Dog</item>
+
+    </string-array>
+
+    <string-array name="pet_typeend">
+        <item>Enter</item>
+        <item>Dog</item>
+
     </string-array>
 
     <string-array name="colors_array">
@@ -120,5 +132,60 @@
         <item>180</item>
         <item>360</item>
         <item>-1</item>
+    </string-array>
+
+
+    <string-array name="cat_breed">
+        <item>	American Shorthair	</item>
+        <item>	Angora	</item>
+        <item>	Balinese	</item>
+        <item>	Bengal	</item>
+        <item>	Burma	</item>
+        <item>	Bombay	</item>
+        <item>	British Shorthair	</item>
+        <item>	Burmezskaya	</item>
+        <item>	Burma	</item>
+        <item>	Havana Brown	</item>
+        <item>	Himalayan	</item>
+        <item>	Devon Rex	</item>
+        <item>	Egyptian Mau	</item>
+        <item>	Cymric Cat	</item>
+        <item>	Cornish Rex	</item>
+        <item>	Korat	</item>
+        <item>	Manx	</item>
+        <item>	Munchkin	</item>
+        <item>	Maine Coon	</item>
+        <item>	Nibelung	</item>
+        <item>	Norwegian Forest Cat	</item>
+        <item>	Oriental	</item>
+        <item>	Ocicat	</item>
+        <item>	Persian	</item>
+        <item>	Russian Blue	</item>
+        <item>	Regdol	</item>
+        <item>	Selkirk Rex	</item>
+        <item>	Siamese	</item>
+        <item>	Siberian	</item>
+        <item>	Singapore	</item>
+        <item>	Snowshoe	</item>
+        <item>	Somalia	</item>
+        <item>	Sphinx	</item>
+        <item>	Tiffany	</item>
+        <item>	Tonkiyskaya	</item>
+        <item>	Turkish Angora	</item>
+        <item>	Turkish Van	</item>
+        <item>	Chartreuse	</item>
+        <item>	Scottish lop-eared	</item>
+        <item>	Exotic Shorthair	</item>
+        <item>	Yavaneziyskaya	</item>
+        <item>	Japanese Bobtail	</item>
+
+    </string-array>
+    <string-array name="dog_breed">
+        <item quantity="one">Barbet</item>
+        <item>Basenji</item>
+        <item>Field Spaniel</item>
+        <item>Ibizan Hound</item>
+        <item>Japanese Chin</item>
+        <item>Kuvasz</item>
     </string-array>
 </resources>

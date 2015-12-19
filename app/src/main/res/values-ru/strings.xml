@@ -82,5 +82,52 @@
     <string name="delpet">Питомец удален</string>
     <string name="petlist">Выполнить..</string>
     <string name="showtask">Показать задачи</string>
+    <string-array name="cat_breed">
+        <item>	Абиссинская	</item>
+        <item>	Американский Бобтейл	</item>
+        <item>	Американский Керл	</item>
+        <item>	Американская короткошерстная	</item>
+        <item>	Американская жесткошерстная	</item>
+        <item>	Ангорская	</item>
+        <item>	Балинезийская	</item>
+        <item>	Бенгальская	</item>
+        <item>	Бирма	</item>
+        <item>	Бомбейская	</item>
+        <item>	Британская короткошерстная	</item>
+        <item>	Бурмезская	</item>
+        <item>	Бурмила	</item>
+        <item>	Гавана Браун	</item>
+        <item>	Гималайская	</item>
+        <item>	Девон Рэкс	</item>
+        <item>	Египетская Мау	</item>
+        <item>	Кимрик	</item>
+        <item>	Корниш Рэкс	</item>
+        <item>	Корат	</item>
+        <item>	Манкс	</item>
+        <item>	Манчкин	</item>
+        <item>	Мэйн Кун	</item>
+        <item>	Нибелунг	</item>
+        <item>	Норвежская лесная	</item>
+        <item>	Ориентальная	</item>
+        <item>	Оцикет	</item>
+        <item>	Персидская	</item>
+        <item>	Русская голубая	</item>
+        <item>	Рэгдол	</item>
+        <item>	Селкирк Рэкс	</item>
+        <item>	Сиамская	</item>
+        <item>	Сибирская	</item>
+        <item>	Сингапурская	</item>
+        <item>	Сноушу	</item>
+        <item>	Сомали	</item>
+        <item>	Сфинкс	</item>
+        <item>	Тиффани	</item>
+        <item>	Тонкийская	</item>
+        <item>	Турецкая Ангора	</item>
+        <item>	Турецкий Ван	</item>
+        <item>	Шартрез	</item>
+        <item>	Шотландская вислоухая	</item>
+        <item>	Экзотическая короткошерстная	</item>
+        <item>	Яванезийская	</item>
 
+    </string-array>
 </resources>
