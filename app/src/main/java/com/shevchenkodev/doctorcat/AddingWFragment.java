@@ -1,6 +1,9 @@
 package com.shevchenkodev.doctorcat;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.view.LayoutInflater;
@@ -9,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 public class AddingWFragment extends Fragment {
@@ -22,7 +27,7 @@ public class AddingWFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_adding_w, container, false);
-
+        ImageView imageView4 = (ImageView) rootView.findViewById(R.id.imageView4);
         final TextInputLayout tilTitle = (TextInputLayout) rootView.findViewById(R.id.tilWeightEnter);
         final EditText etTitle = tilTitle.getEditText();
         tilTitle.setHint(getResources().getString(R.string.enterweight));
@@ -60,7 +65,54 @@ public class AddingWFragment extends Fragment {
                 spBreed.setAdapter(petBreedAdapter);
             }
         });
+        imageView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Double trying = Double.valueOf(etTitle.getText().toString());
+                Double norma = (((breedConst - trying) / breedConst)) * 100;
+                if (breedConst != 0) {
+                    if (norma > -10) {
 
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle(R.string.resulttit)
+                                .setMessage(R.string.weightmess)
+
+
+                                .setCancelable(false)
+                                .setNegativeButton(R.string.returning,
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                                dialog.cancel();
+                                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                                startActivity(intent);
+                                            }
+                                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    } else if (norma <= -10) {
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle(R.string.resulttit)
+                                .setMessage(getString(R.string.petweigres1) + Math.round(-norma) + getString(R.string.petweughtres2))
+
+                                .setCancelable(false)
+                                .setNegativeButton(R.string.returning,
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                                startActivity(intent);
+                                            }
+                                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), R.string.didnchois, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
         spBreed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                               @Override
                                               public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -206,6 +258,42 @@ public class AddingWFragment extends Fragment {
                                                       case 145:
                                                           breedConst = 3.6;
                                                           break;
+                                                      case 200:
+                                                          breedConst = 28;
+                                                          break;
+                                                      case 201:
+                                                          breedConst = 32;
+                                                          break;
+                                                      case 202:
+                                                          breedConst = 2.7;
+                                                          break;
+                                                      case 203:
+                                                          breedConst = 5.4;
+                                                          break;
+                                                      case 204:
+                                                          breedConst = 27;
+                                                          break;
+                                                      case 205:
+                                                          breedConst = 25;
+                                                          break;
+                                                      case 206:
+                                                          breedConst = 55;
+                                                          break;
+                                                      case 207:
+                                                          breedConst = 8.2;
+                                                          break;
+                                                      case 208:
+                                                          breedConst = 5;
+                                                          break;
+                                                      case 209:
+                                                          breedConst = 23;
+                                                          break;
+                                                      case 210:
+                                                          breedConst = 3.6;
+                                                          break;
+                                                      case 211:
+                                                          breedConst = 3.2;
+                                                          break;
 
                                                   }
 
@@ -213,20 +301,12 @@ public class AddingWFragment extends Fragment {
 
                                               @Override
                                               public void onNothingSelected(AdapterView<?> parent) {
-
+                                                  Toast.makeText(getActivity(), R.string.didnchois, Toast.LENGTH_LONG).show();
                                               }
                                           }
         );
         return rootView;
     }
 
-    void onClickWaight() {
 
-        if (breedConst != 0) {
-            Double norma = breedConst - Double.valueOf(etTitle.getText().toString());
-            if (norma < 0) {
-            } else if (norma > 0) {
-            }
-        }
     }
-}

@@ -3,6 +3,7 @@ package com.shevchenkodev.doctorcat;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.shevchenkodev.doctorcat.weight.Weight1Fragment;
@@ -16,6 +17,9 @@ public class WaightActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waight);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Weight1Fragment weight1Fragment = new Weight1Fragment();
         fragmentManager = getFragmentManager();
 

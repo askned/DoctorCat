@@ -9,7 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Pet type"
+        android:text="@string/pettype"
+        android:layout_marginTop="70dp"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -25,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Pet breed"
+        android:text="@string/breed"
         android:id="@+id/textView2"
         android:layout_below="@+id/spinnertype"
         android:layout_centerHorizontal="true" />
@@ -47,7 +48,7 @@
         android:layout_below="@+id/spinnerbreed">
 
         <EditText
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/weightval"
             android:inputType="number|numberSigned|numberDecimal"

@@ -116,6 +116,12 @@ public class MainActivity extends AppCompatActivity
 
             return true;
         }
+        if (id == R.id.pet_weight) {
+            Intent intent = new Intent(MainActivity.this, WaightActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
         if (id == R.id.setting) {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
@@ -124,8 +130,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
 
+    }
     public void runSplash() {
         if (!preferenceHelper.getBoolean(PreferenceHelper.SPLASH_IS_INVISIBLE)) {
 

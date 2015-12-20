@@ -30,18 +30,6 @@ public class Weight1Fragment extends Fragment {
 
         ImageView imageView4 = (ImageView) container.findViewById(R.id.imageView4);
 
-//        imageView4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                fragmentManager = getFragmentManager();
-//                AddingWFragment addingWFragment = new AddingWFragment();
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.weightconteiner, addingWFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//            }
-//        });
-
         return rootView;
 
     }

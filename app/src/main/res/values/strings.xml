@@ -9,6 +9,7 @@
 
     <string name="current_task">Current</string>
     <string name="done_task">Done</string>
+    <string name="pet_weight">Test weight</string>
 
     <string name="dialog_title">Adding task</string>
     <string name="dialog_ok" translatable="false">OK</string>
@@ -77,7 +78,14 @@
     <string name="showtask">Show tasks</string>
     <string name="del">Delete</string>
     <string name="censel">Cancel</string>
-    <string name="enterweight">Enter weight in kilograms</string>
+    <string name="enterweight">Enter weight in kilograms(ex. 3.75)</string>
+    <string name="pettype">Pet type</string>
+    <string name="breed">Pet breed</string>
+    <string name="didnchois">You didn\'t choose anything</string>
+    <string name="resulttit">Result</string>
+    <string name="weightmess">Your pet all right!</string>
+    <string name="petweigres1">"The weight of your pet exceeds the norm by "</string>
+    <string name="petweughtres2">" %, we recommended to visit the veterinarian"</string>
     <string-array name="priority_array">
         <item>Low Priority</item>
         <item>Normal Priority</item>
@@ -181,11 +189,20 @@
 
     </string-array>
     <string-array name="dog_breed">
-        <item quantity="one">Barbet</item>
-        <item>Basenji</item>
-        <item>Field Spaniel</item>
-        <item>Ibizan Hound</item>
-        <item>Japanese Chin</item>
-        <item>Kuvasz</item>
+        <item>	Boxer	</item>
+        <item>	Bull Terrier	</item>
+        <item>	Chihuahua	</item>
+        <item>	Chinese Crested	</item>
+        <item>	Collie	</item>
+        <item>	Husky	</item>
+        <item>	Malamute	</item>
+        <item>	Mops	</item>
+        <item>	Pekingese	</item>
+        <item>	Shar Pei	</item>
+        <item>	Toy Terrier	</item>
+        <item>	Yorkshire terrier</item>
+
     </string-array>
+    <string name="returning">Return</string>
+    <string name="fillpetweight">To date, more than 50% of animals at the veterinary examination revealed overweight. \n This problem equally applies to both cats and dogs.\n  Obesity - a disease. \n\n Check the weight of your pet now!</string>
 </resources>

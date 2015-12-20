@@ -50,7 +50,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shevchenkodev.doctorcat.MainActivity" />
         </activity>
-        <activity android:name=".WaightActivity"></activity>
+        <activity android:name=".WaightActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shevchenkodev.doctorcat.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
