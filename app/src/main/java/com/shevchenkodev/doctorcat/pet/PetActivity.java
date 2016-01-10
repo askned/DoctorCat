@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.shevchenkodev.doctorcat.R;
 import com.shevchenkodev.doctorcat.WaightActivity;
+import com.shevchenkodev.doctorcat.activity.TestActivity;
 import com.shevchenkodev.doctorcat.datebase.DBHelper;
 import com.shevchenkodev.doctorcat.dialog.AddingPetDialog;
 import com.shevchenkodev.doctorcat.model.ModelPet;
@@ -124,7 +125,7 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
 
 
         //  final String[] mCatsName = {"Edit", "Deleta", "Cancel"};
-        final String[] mCatsName = {getString(R.string.showtask), getString(R.string.pet_weight), getString(R.string.del), getString(R.string.censel)};
+        final String[] mCatsName = {getString(R.string.showtask), getString(R.string.pet_weight), getString(R.string.pet_test), getString(R.string.del), getString(R.string.censel)};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.petlist); // заголовок для диалога
@@ -147,6 +148,11 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
                         startActivity(intent);
                         return;
                     case 2:
+
+                        Intent intent2 = new Intent(PetActivity.this, TestActivity.class);
+                        startActivity(intent2);
+                        return;
+                    case 3:
                         dbHelper.removePet(name);
                         if (names.size() == 1) {
                             onPetAdded(null, false);
@@ -162,7 +168,7 @@ public class PetActivity extends AppCompatActivity implements AddingPetDialog.Ad
                         //  }
                         addPetFromDB();
                         return;
-                    case 3:
+                    case 4:
                         return;
                 }
 

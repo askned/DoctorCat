@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.shevchenkodev.doctorcat.activity.TestActivity;
 import com.shevchenkodev.doctorcat.adapter.TabAdapter;
 import com.shevchenkodev.doctorcat.alarm.AlarmHelper;
 import com.shevchenkodev.doctorcat.datebase.DBHelper;
@@ -118,6 +119,12 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.pet_weight) {
             Intent intent = new Intent(MainActivity.this, WaightActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+        if (id == R.id.pet_test) {
+            Intent intent = new Intent(MainActivity.this, TestActivity.class);
             startActivity(intent);
 
             return true;

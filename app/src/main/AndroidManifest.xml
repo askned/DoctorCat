@@ -55,6 +55,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shevchenkodev.doctorcat.MainActivity" />
         </activity>
+        <activity android:name=".activity.TestActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shevchenkodev.doctorcat.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
