@@ -63,6 +63,7 @@
         <item>Бороться с глистами</item>
         <item>Чистить уши</item>
         <item>Вакцинация</item>
+        <item>Накормить бездомного животного</item>
     </string-array>
     <string-array name="pref_example_list_titles">
         <item>Всегда</item>
@@ -192,9 +193,9 @@
     <string name="test12">Вопрос 12 из 15</string>
     <string name="test12q">Отмечаться рвота, понос?</string>
     <string name="test13">Вопрос 13 из 15</string>
-    <string name="test13q">Число вдохов и выдохов НЕ в пределах 18-32 в минуту?</string>
+    <string name="test13q">Число вдохов и выдохов НЕ в пределах 18–32 в минуту?</string>
     <string name="test14">Вопрос 14 из 15</string>
-    <string name="test14q">Температура тела кошки НЕ как у здоровой кошки 38-39 градусов?</string>
+    <string name="test14q">Температура тела кошки НЕ как у здоровой кошки 38–39 градусов?</string>
     <string name="test15">Вопрос 15 из 15</string>
     <string name="test15q">Пульс НЕ как у здоровой кошки от 100 до 120 ударов в минуту(проверяется на внутренней поверхности бедра)?</string>
     <string name="ratetit">Оцените наше приложение</string>

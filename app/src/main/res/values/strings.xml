@@ -83,7 +83,7 @@
     <string name="breed">Pet breed</string>
     <string name="didnchois">You didn\'t choose anything</string>
     <string name="resulttit">Result</string>
-    <string name="weightmess">Your pet all right!</string>
+    <string name="weightmess">Your pet have normal weight!</string>
     <string name="petweigres1">"The weight of your pet exceeds the norm by "</string>
     <string name="petweughtres2">" %, we recommended to visit the veterinarian"</string>
     <string-array name="priority_array">
@@ -114,6 +114,7 @@
         <item>Give medication</item>
         <item>Flea treatment</item>
         <item>Vaccination</item>
+        <item>Feed homeless animal</item>
     </string-array>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
@@ -206,7 +207,7 @@
     <string name="returning">Return</string>
     <string name="fillpetweight">To date, more than 50% of animals at the veterinary examination revealed overweight. \n This problem equally applies to both cats and dogs.\n  Obesity - a disease. \n\n Check the weight of your pet now!How to weigh restless pet:\nMethod 1: put your pet in a bag or carry and weigh, then subtract the weight of the bag. \nMethod 2: Take your pet in your hands and weigh in with her pet weight in this case is the difference between your weight and shown.
     </string>
-    <string name="pet_test">Check health</string>
+    <string name="pet_test">Test health</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="test_discrip">At this version, the test is only for cats health. The test consists of 15 questions. If your pet has a problem then said yes, at the end of the test you will get result</string>
@@ -235,9 +236,9 @@
     <string name="test12">Question 12 of 15</string>
     <string name="test12q">Notes the vomiting, diarrhea?</string>
     <string name="test13">Question 13 of 15</string>
-    <string name="test13q">The number of breaths is Not within the 18-32 per minute?</string>
+    <string name="test13q">The number of breaths is Not within the 18–32 per minute?</string>
     <string name="test14">Question 14 of 15</string>
-    <string name="test14q">The body temperature of cats do Not like a healthy cat 38-39С degrees?</string>
+    <string name="test14q">The body temperature of cats do Not like a healthy cat 38–39С degrees?</string>
     <string name="test15">Question 15 of 15</string>
     <string name="test15q">Pulse is Not like a healthy cat from 100 to 120 beats per minute (check on the inside of the thigh)?</string>
     <string name="ratetit">Please rate our app</string>
